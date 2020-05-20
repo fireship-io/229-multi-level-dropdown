@@ -35,9 +35,25 @@ function Navbar(props) {
 
 function NavItem(props) {
   const [open, setOpen] = useState(false);
+  const NavItemRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    const domNode = NavItemRef.current;
+
+    if (!domNode || !domNode.contains(event.target)) {
+      setOpen(false);
+    }
+  };
 
   return (
-    <li className="nav-item">
+    <li className="nav-item" ref={NavItemRef}>
       <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
