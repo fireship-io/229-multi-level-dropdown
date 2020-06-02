@@ -8,7 +8,7 @@ import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 function App() {
@@ -49,12 +49,7 @@ function NavItem(props) {
 
 function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState('main');
-  const [menuHeight, setMenuHeight] = useState(null);
-  const dropdownRef = useRef(null);
-
-  useEffect(() => {
-    setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
-  }, [])
+  const [menuHeight, setMenuHeight] = useState('auto');
 
   function calcHeight(el) {
     const height = el.offsetHeight;
@@ -72,7 +67,7 @@ function DropdownMenu() {
   }
 
   return (
-    <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
+    <div className="dropdown" style={{ height: menuHeight }}>
 
       <CSSTransition
         in={activeMenu === 'main'}
