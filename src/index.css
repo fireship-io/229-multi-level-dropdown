@@ -95,12 +95,13 @@ a {
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
-  padding: 1rem;
   overflow: hidden;
   transition: height var(--speed) ease;
 }
 
 .menu {
+  box-sizing: border-box;
+  padding: 1rem;
   width: 100%;
 }
 
