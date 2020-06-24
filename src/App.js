@@ -84,7 +84,7 @@ function DropdownMenu() {
           <DropdownItem>My Profile</DropdownItem>
           <DropdownItem
             leftIcon={<CogIcon />}
-            rightIcon="&#9917;"
+            rightIcon={<ChevronIcon />}
             goToMenu="settings">
             Settings
           </DropdownItem>
